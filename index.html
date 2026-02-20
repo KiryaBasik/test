@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anna Mystic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #faf6f0;
+        color: #4a423c;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      .playfair {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(250, 246, 240, 0.85);
+        backdrop-filter: blur(12px);
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 5%;
+        transition:
+          padding 0.4s,
+          background 0.4s;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: #9a8b7c;
+      }
+
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 42px;
+        background-color: #4a423c;
+        color: #faf6f0;
+        border-radius: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 13px;
+        transition:
+          background-color 0.4s,
+          transform 0.4s;
+      }
+
+      .btn:hover {
+        background-color: #9a8b7c;
+        transform: translateY(-3px);
+      }
+
+      .hero {
+        padding: 180px 5% 120px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 50%;
+      }
+
+      .hero-text-block {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        line-height: 1.05;
+        color: #2d2824;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #9a8b7c;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: 22px;
+        line-height: 1.6;
+        font-style: italic;
+        color: #5c544d;
+      }
+
+      .hero-actions {
+        display: flex;
+      }
+
+      .hero-image {
+        width: 50%;
+        height: 80vh;
+        border-radius: 300px 300px 20px 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .about {
+        background-color: #ebe3d8;
+        padding: 140px 5%;
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 100px;
+        align-items: center;
+      }
+
+      .about-image {
+        border-radius: 200px 20px 200px 20px;
+        overflow: hidden;
+        height: 800px;
+        box-shadow: 0 20px 50px rgba(74, 66, 60, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .about-title {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .about-title h2 {
+        font-size: 56px;
+        color: #2d2824;
+      }
+
+      .about-title p {
+        font-size: 24px;
+        font-style: italic;
+        color: #9a8b7c;
+      }
+
+      .about-points {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 30px;
+        border-left: 2px solid #d1c5b9;
+      }
+
+      .about-points span {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #4a423c;
+      }
+
+      .about-desc {
+        font-size: 16px;
+        line-height: 1.8;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 60px;
+        padding: 40px 0 0 0;
+        border-top: 1px solid #d1c5b9;
+      }
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .stat-number {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        color: #2d2824;
+        font-style: italic;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #9a8b7c;
+      }
+
+      .services {
+        padding: 160px 5% 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .services-image-container {
+        width: 100%;
+        height: 75vh;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      }
+
+      .services-image-container img {
+        width: 100%;
+        height: 100%;
+        object-position: center top;
+        transform: scale(1.05);
+        transition: transform 10s ease;
+      }
+
+      .services-image-container:hover img {
+        transform: scale(1);
+      }
+
+      .services-card-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .services-card {
+        background-color: #fffdfb;
+        padding: 80px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        width: 85%;
+        transform: translateY(-20%);
+        box-shadow: 0 30px 60px rgba(74, 66, 60, 0.08);
+      }
+
+      .services-card h2 {
+        font-size: 48px;
+        text-align: center;
+        color: #2d2824;
+      }
+
+      .services-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .services-item {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 30px 0;
+        border-bottom: 1px solid #ebe3d8;
+      }
+
+      .services-item:last-child {
+        border-bottom: none;
+      }
+
+      .services-icon {
+        width: 12px;
+        height: 12px;
+        background-color: #9a8b7c;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .services-text {
+        font-size: 20px;
+        line-height: 1.5;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+
+      .services-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+        padding-top: 20px;
+      }
+
+      .services-footer p {
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 600px;
+      }
+
+      .reviews {
+        background-color: #ebe3d8;
+        padding: 140px 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .reviews-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #d1c5b9;
+      }
+
+      .reviews-titles {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .reviews-titles h2 {
+        font-size: 56px;
+        color: #2d2824;
+      }
+
+      .reviews-titles p {
+        font-size: 18px;
+        color: #9a8b7c;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .slider-wrapper {
+        position: relative;
+        padding: 0 80px;
+      }
+
+      .slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid #4a423c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          color 0.3s,
+          opacity 0.3s;
+        color: #4a423c;
+        background: #ebe3d8;
+        z-index: 10;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .slider-arrow.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .slider-arrow:hover {
+        background: #4a423c;
+        color: #faf6f0;
+      }
+
+      .slider-arrow.prev {
+        left: 0;
+      }
+
+      .slider-arrow.next {
+        right: 0;
+      }
+
+      .slider-container {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - (3 * 30px)) / 4);
+        gap: 30px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .slider-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .review-card {
+        scroll-snap-align: start;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        aspect-ratio: 9 / 16;
+        background: #d1c5b9;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .review-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+        -webkit-user-drag: none;
+      }
+
+      .review-hover-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(45, 40, 36, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+
+      .review-icon {
+        width: 60px;
+        height: 60px;
+        background: #faf6f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2d2824;
+        transform: scale(0.8);
+        transition: transform 0.4s;
+      }
+
+      .review-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(45, 40, 36, 0.98);
+        z-index: 1000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+
+      .review-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .review-overlay-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        aspect-ratio: 9 / 16;
+      }
+
+      .review-overlay-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .overlay-btn {
+        position: absolute;
+        width: 56px;
+        height: 56px;
+        background: rgba(250, 246, 240, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: #faf6f0;
+        transition: background 0.3s;
+        z-index: 1001;
+        border: 1px solid rgba(250, 246, 240, 0.2);
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .overlay-btn:hover {
+        background: rgba(250, 246, 240, 0.3);
+      }
+
+      .overlay-close {
+        top: 30px;
+        right: 30px;
+      }
+
+      .overlay-prev {
+        top: 50%;
+        left: 30px;
+        transform: translateY(-50%);
+      }
+
+      .overlay-next {
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+      }
+
+      .footer-section {
+        background-color: #2d2824;
+        color: #faf6f0;
+        padding: 120px 5% 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+      }
+
+      .contacts-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .contacts-block h2 {
+        font-size: 56px;
+        color: #faf6f0;
+      }
+
+      .contacts-block p {
+        font-size: 20px;
+        max-width: 600px;
+        line-height: 1.6;
+        color: #d1c5b9;
+      }
+
+      .contacts-btn {
+        background-color: #faf6f0;
+        color: #2d2824;
+      }
+
+      .contacts-btn:hover {
+        background-color: #d1c5b9;
+      }
+
+      .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .footer-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(250, 246, 240, 0.1);
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 32px;
+        letter-spacing: 3px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 40px;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+        color: #d1c5b9;
+      }
+
+      .footer-links a:hover {
+        color: #faf6f0;
+      }
+
+      .footer-disclaimer {
+        font-size: 13px;
+        color: rgba(250, 246, 240, 0.4);
+        line-height: 1.6;
+        max-width: 800px;
+        text-align: left;
+      }
+
+      @media (min-width: 1025px) {
+        .review-card:hover img {
+          transform: scale(1.05);
+        }
+        .review-card:hover .review-hover-overlay {
+          opacity: 1;
+        }
+        .review-card:hover .review-icon {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 160px;
+        }
+
+        .hero-content,
+        .hero-image {
+          width: 100%;
+        }
+
+        .hero-content {
+          align-items: center;
+        }
+
+        .hero h1 {
+          font-size: 60px;
+        }
+
+        .hero-image {
+          height: 60vh;
+          border-radius: 200px 200px 20px 20px;
+        }
+
+        .about {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+
+        .about-image {
+          height: 600px;
+          order: -1;
+        }
+
+        .services {
+          padding-bottom: 120px;
+          padding-top: 120px;
+        }
+
+        .services-image-container {
+          height: 50vh;
+        }
+
+        .services-card {
+          width: 95%;
+          padding: 60px 40px;
+          transform: translateY(-10%);
+        }
+
+        .reviews-top {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 30px;
+        }
+
+        .slider-wrapper {
+          padding: 0 60px;
+        }
+
+        .slider-container {
+          grid-auto-columns: calc((100% - (2 * 30px)) / 3);
+        }
+
+        .footer-nav {
+          flex-direction: column;
+          gap: 30px;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 44px;
+        }
+
+        .hero-image {
+          height: 50vh;
+        }
+
+        .about {
+          padding: 100px 5%;
+        }
+
+        .about-image {
+          height: 400px;
+          border-radius: 100px 20px 100px 20px;
+        }
+
+        .about-title h2,
+        .services-card h2,
+        .reviews-titles h2,
+        .contacts-block h2 {
+          font-size: 40px;
+        }
+
+        .stats {
+          flex-direction: row;
+          gap: 30px;
+        }
+
+        .services-card {
+          padding: 40px 20px;
+          transform: translateY(-5%);
+        }
+
+        .services-text {
+          font-size: 16px;
+        }
+
+        .slider-arrow {
+          display: none !important;
+        }
+
+        .slider-wrapper {
+          padding: 0;
+        }
+
+        .slider-container {
+          grid-auto-columns: calc((100% - 20px) / 2);
+          gap: 20px;
+        }
+
+        .overlay-prev,
+        .overlay-next {
+          display: none;
+        }
+
+        .review-overlay {
+          padding: 20px;
+        }
+
+        .footer-section {
+          padding: 100px 5% 40px;
+          gap: 80px;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .services-card {
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <a href="#" class="logo">ANNA Mystic.</a>
+      <nav class="nav-links">
+        <a href="#about">O mně</a>
+        <a href="#services">Jak pracuji</a>
+        <a href="#reviews">Recenze</a>
+        <a href="#contacts">Kontakt</a>
+      </nav>
+    </header>
+
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <div class="hero-text-block">
+          <h2>Energetická diagnostika a individuální doprovod</h2>
+          <h1>Anna Mystic</h1>
+          <p>
+            Pomáhám odhalit skutečné příčiny vnitřního napětí a vést život zpět
+            k rovnováze a jasnosti.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a href="https://wa.me/1234567890" target="_blank" class="btn"
+            >Napsat mi</a
+          >
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/images/main.jpg" alt="Anna" />
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-image">
+        <img src="assets/images/12321.jpg" alt="O mně" />
+      </div>
+      <div class="about-content">
+        <div class="about-title">
+          <h2>O mně</h2>
+          <p>Pracuji s lidmi, kteří cítí, že:</p>
+        </div>
+        <div class="about-points">
+          <span>se opakovaně ocitají ve stejných situacích</span>
+          <span>ztrácejí energii, jasnost nebo vnitřní oporu</span>
+          <span>nechápou, proč jejich snaha nepřináší výsledky</span>
+        </div>
+        <div class="about-desc">
+          <span
+            >Moje práce spočívá v citlivé diagnostice stavu a individuálním
+            doprovodu, založeném na dlouholeté praxi.</span
+          >
+          <span
+            >Pomohla jsem stovkám lidí znovu najít klid, stabilitu a důvěru ve
+            vlastní rozhodnutí.</span
+          >
+          <span
+            class="playfair"
+            style="font-size: 22px; color: #9a8b7c; font-style: italic"
+            >Neslibuji — pomáhám vidět podstatu.</span
+          >
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Let praxe</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8000+</span>
+            <span class="stat-label">Proběhlých sezení</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="services-image-container">
+        <img src="assets/images/vosk.jpg" alt="Jak pracuji" />
+      </div>
+      <div class="services-card-wrapper">
+        <div class="services-card">
+          <h2>Jak pracuji</h2>
+          <div class="services-list">
+            <div class="services-item">
+              <div class="services-icon"></div>
+              <span class="services-text"
+                >Energetická diagnostika aktuálního stavu</span
+              >
+            </div>
+            <div class="services-item">
+              <div class="services-icon"></div>
+              <span class="services-text"
+                >Individuální práce s vnitřními bloky</span
+              >
+            </div>
+            <div class="services-item">
+              <div class="services-icon"></div>
+              <span class="services-text">Práce s voskem</span>
+            </div>
+            <div class="services-item">
+              <div class="services-icon"></div>
+              <span class="services-text">Doprovod v období změn</span>
+            </div>
+            <div class="services-item">
+              <div class="services-icon"></div>
+              <span class="services-text">Doporučení pro další kroky</span>
+            </div>
+          </div>
+          <div class="services-footer">
+            <p>
+              Veškerá práce probíhá na dálku. Po diagnostice získáte jasné
+              pochopení své situace a doporučení šitá na míru.
+            </p>
+            <a href="https://wa.me/1234567890" target="_blank" class="btn"
+              >Napsat mi</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="reviews-top">
+        <div class="reviews-titles">
+          <p>Výsledky mé práce</p>
+          <h2>Recenze klientů</h2>
+        </div>
+      </div>
+      <div class="slider-wrapper">
+        <div class="slider-arrow prev hidden" id="slider-prev">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 19L8 12L15 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="slider-container" id="review-slider"></div>
+        <div class="slider-arrow next" id="slider-next">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 5L16 12L9 19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="review-overlay" id="review-overlay">
+      <div class="overlay-btn overlay-close" id="overlay-close">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="overlay-btn overlay-prev" id="overlay-prev">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15 19L8 12L15 5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="review-overlay-content">
+        <img src="" alt="Hodnocení" id="overlay-image" />
+      </div>
+      <div class="overlay-btn overlay-next" id="overlay-next">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 5L16 12L9 19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <section id="contacts" class="footer-section">
+      <div class="contacts-block">
+        <h2>Kontakt</h2>
+        <p>
+          Pokud cítíte, že nastal čas porozumět sobě a své situaci, napište mi.
+          Podívám se na váš dotaz a navrhnu další kroky.
+        </p>
+        <a
+          href="https://wa.me/1234567890"
+          target="_blank"
+          class="btn contacts-btn"
+          >Napsat mi</a
+        >
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-nav">
+          <div class="footer-logo">ANNA Mystic.</div>
+          <div class="footer-links">
+            <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+            <a href="#">Telegram</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-disclaimer">
+          Informace na těchto stránkách mají informativní charakter a
+          nenahrazují lékařské, psychologické ani jiné odborné poradenství.
+          Výsledky jsou individuální.
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.style.padding = "16px 5%";
+          header.style.background = "rgba(250, 246, 240, 0.98)";
+          header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.05)";
+        } else {
+          header.style.padding = "24px 5%";
+          header.style.background = "rgba(250, 246, 240, 0.85)";
+          header.style.boxShadow = "none";
+        }
+      });
+
+      const reviewImages = [
+        "assets/review/1.jpg",
+        "assets/review/2.jpg",
+        "assets/review/3.jpg",
+        "assets/review/4.jpg",
+        "assets/review/5.jpg",
+        "assets/review/6.jpg",
+        "assets/review/7.jpg",
+        "assets/review/8.jpg",
+        "assets/review/9.jpg",
+        "assets/review/10.jpg",
+        "assets/review/11.jpg",
+      ];
+
+      const sliderContainer = document.getElementById("review-slider");
+      const overlay = document.getElementById("review-overlay");
+      const overlayImage = document.getElementById("overlay-image");
+      const overlayClose = document.getElementById("overlay-close");
+      const overlayPrev = document.getElementById("overlay-prev");
+      const overlayNext = document.getElementById("overlay-next");
+      const sliderPrev = document.getElementById("slider-prev");
+      const sliderNext = document.getElementById("slider-next");
+      let currentReviewIndex = 0;
+
+      function updateSliderArrows() {
+        if (sliderContainer.scrollLeft <= 5) {
+          sliderPrev.classList.add("hidden");
+        } else {
+          sliderPrev.classList.remove("hidden");
+        }
+
+        if (
+          Math.ceil(sliderContainer.scrollLeft + sliderContainer.clientWidth) >=
+          sliderContainer.scrollWidth - 5
+        ) {
+          sliderNext.classList.add("hidden");
+        } else {
+          sliderNext.classList.remove("hidden");
+        }
+      }
+
+      sliderContainer.addEventListener("scroll", updateSliderArrows);
+      window.addEventListener("resize", updateSliderArrows);
+
+      function loadReviews() {
+        reviewImages.forEach((src, index) => {
+          const card = document.createElement("div");
+          card.className = "review-card";
+          card.innerHTML = `
+                    <img src="${src}" alt="Hodnocení ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80'">
+                    <div class="review-hover-overlay">
+                        <div class="review-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 3H21M21 3V9M21 3L14 10M9 21H3M3 21V15M3 21L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                `;
+          card.addEventListener("click", () => openOverlay(index));
+          sliderContainer.appendChild(card);
+        });
+        setTimeout(updateSliderArrows, 50);
+      }
+
+      function openOverlay(index) {
+        currentReviewIndex = index;
+        overlayImage.src = reviewImages[currentReviewIndex];
+
+        overlayImage.onerror = function () {
+          this.src =
+            "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80";
+        };
+
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeOverlay() {
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function navigateOverlay(direction) {
+        currentReviewIndex =
+          (currentReviewIndex + direction + reviewImages.length) %
+          reviewImages.length;
+        overlayImage.src = reviewImages[currentReviewIndex];
+
+        overlayImage.onerror = function () {
+          this.src =
+            "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80";
+        };
+      }
+
+      overlayClose.addEventListener("click", closeOverlay);
+      overlayPrev.addEventListener("click", () => navigateOverlay(-1));
+      overlayNext.addEventListener("click", () => navigateOverlay(1));
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeOverlay();
+      });
+
+      sliderPrev.addEventListener("click", () => {
+        const firstCard = sliderContainer.firstElementChild;
+        if (firstCard) {
+          const gap =
+            parseFloat(window.getComputedStyle(sliderContainer).gap) || 0;
+          sliderContainer.scrollBy({
+            left: -(firstCard.offsetWidth + gap),
+            behavior: "smooth",
+          });
+        }
+      });
+
+      sliderNext.addEventListener("click", () => {
+        const firstCard = sliderContainer.firstElementChild;
+        if (firstCard) {
+          const gap =
+            parseFloat(window.getComputedStyle(sliderContainer).gap) || 0;
+          sliderContainer.scrollBy({
+            left: firstCard.offsetWidth + gap,
+            behavior: "smooth",
+          });
+        }
+      });
+
+      loadReviews();
+    </script>
+  </body>
+</html>
